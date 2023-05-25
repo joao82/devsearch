@@ -1,0 +1,14 @@
+{% extends 'layout.html' %} {% block main_content %}
+
+<main class="main main--error">
+  <h1>403 - Page Not Authorization</h1>
+  <p>
+    Sorry, you are not authorized to access this page. Please login to access
+    the content.
+  </p>
+  <a class="btn btn--sub btn--lg my-md" href="{{ url_for('auth.login') }}"
+    >Go to Login</a
+  >
+</main>
+
+{% endblock main_content %}

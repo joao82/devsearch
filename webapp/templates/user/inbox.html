@@ -1,0 +1,27 @@
+{% from "macros/fields.html" import render_text_field, render_area_field%} {%
+extends 'layout.html' %} {% block main_content %}
+
+<!-- Main Section -->
+<main class="inbox my-xl">
+  <div class="content-box">
+    <h3 class="inbox__title">New Messages(<span>{{unreadCount}}</span>)</h3>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %} {% if message in unread_messages %}
+      <li class="message message--unread">{% else %}</li>
+
+      <li class="message">
+        {% endif %}
+        <a href="{{ url_for('user.single_message', message_id=message.id) }}">
+          <span class="message__author">{{message.author.fullname}}</span>
+          <span class="message__subject">{{message.subject}}</span>
+          <span class="message__date">{{message.created_at}}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</main>
+
+{% endblock main_content %}

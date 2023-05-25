@@ -1,0 +1,47 @@
+{% from "macros/fields.html" import render_text_field %} {% extends
+'layout.html' %} {% block head_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}" />
+{% endblock head_content %} {% block main_content %}
+
+<div class="auth">
+  <div class="card">
+    <div class="auth__header text-center">
+      <a href="/">
+        <img
+          src="{{ url_for('static', filename='img/icon.svg') }}"
+          alt="icon"
+        />
+      </a>
+      <h3>Account Login</h3>
+      <p>Hello Developer, Welcome Back!</p>
+    </div>
+
+    <form action="" method="POST" class="form auth__form">
+      {{ form.hidden_tag() }}
+      <!-- Input:Username -->
+      <div class="form__field">
+        <label for="formInput#text">{{form.username.label}}: </label>
+        {{form.username(class="input input--text", id="formInput#text",
+        type="text", placeholder="Enter your username...")}}
+      </div>
+
+      <!-- Input:Password -->
+      <div class="form__field">
+        <label for="formInput#password">{{form.password.label}}: </label>
+        {{form.password(class="input input--password", id="formInput#passowrd",
+        type="password", placeholder="••••••••")}}
+      </div>
+
+      <div class="auth__actions">
+        {{ form.submit(class="btn btn--sub btn--lg", value="Sign In") }}
+        <a href="{{ url_for('auth.reset_pwd_request') }}">Forget Password?</a>
+      </div>
+    </form>
+    <div class="auth__alternative">
+      <p>Don’t have an Account?</p>
+      <a href="{{ url_for('auth.register') }}">Sign Up</a>
+    </div>
+  </div>
+</div>
+
+{% endblock main_content %}

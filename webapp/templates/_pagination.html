@@ -1,0 +1,30 @@
+<br />
+<nav aria-label="...">
+  <div class="pagination">
+    <ul class="container">
+      <li>
+        <a
+          class="btn page-link {% if pages.has_prev %} btn--sub {% endif %}"
+          href=".?page={{ pages.prev_num }}"
+          >&#10094; Prev</a
+        >
+      </li>
+      {% for page in pages.iter_pages() %}
+      <li>
+        <a
+          class="btn page-link {% if page == pages.page %} btn--sub {% endif %}"
+          href=".?page={{ page }}"
+          >{{page}}</a
+        >
+      </li>
+      {% endfor %}
+      <li>
+        <a
+          class="btn page-link {% if pages.has_next %} btn--sub {% endif %}"
+          href=".?page={{ pages.next_num }}"
+          >Next &#10095;</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>

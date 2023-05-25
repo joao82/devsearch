@@ -1,0 +1,22 @@
+{% extends 'layout.html' %} {% block main_content %}
+
+  <!-- Main Section -->
+  <main class="messagePage my-xl">
+    <div class="content-box">
+      <div class="message">
+        <a class="backButton" href="{{ url_for('user.messages') }}"><i class="im im-angle-left"></i></a>
+        <h2 class="message__subject">{{message.subject}}</h4>
+        
+          {% if message.author.fullname %}
+          <a href="{{ url_for('user.single_user', user_id=message.author.id) }}" class="message__author">{{message.author.fullname}}</a>
+          {% else %}
+          <p class="message__author">{{message.author.fullname}}</p>
+          {% endif %}
+
+        <p class="message__date">{{message.created_at}}</p>
+        <div class="message__body">{{message.body}}</div>
+      </div>
+    </div>
+  </main>
+
+{% endblock main_content %}

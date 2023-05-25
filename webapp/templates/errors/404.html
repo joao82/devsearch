@@ -1,0 +1,14 @@
+{% extends 'layout.html' %} {% block main_content %}
+
+<main class="main main--error">
+  <h1>404 - Page Not Found</h1>
+  <p>
+    Sorry, we couldn't find the page you're looking for. It may have been
+    mis-spelled, or it doesn't exist anymore.
+  </p>
+  <a class="btn btn--sub btn--lg my-md" href="{{ url_for('user.index') }}"
+    >Go to home</a
+  >
+</main>
+
+{% endblock main_content %}

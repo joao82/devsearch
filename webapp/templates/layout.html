@@ -1,0 +1,44 @@
+{% from "macros/_navbar.html" import header %}
+{% from "macros/_footer.html" import footer %}
+
+<!DOCTYPE html>
+<html lang="en" class="{{ 'dark-mode' if session.get('theme') == 'dark' }}"></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='uikit/styles/uikit.css') }}" />
+    <link
+    href="https://fonts.googleapis.com/css?family=Public+Sans:400,600&display=swap"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}" />
+    <title> {{ title | default('DevSearch') }} </title>
+
+    {% block head_content %} {% endblock head_content %}
+  </head>
+  <body>
+    {{ header(current_user, session.get("theme")) }}
+
+    <div class="main">
+      {% block main_content %} 
+      
+      {% with messages = get_flashed_messages() %} 
+      {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %} 
+      
+      {% endblock main_content %}
+    </div>
+
+  </body>
+</html>

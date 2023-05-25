@@ -1,0 +1,64 @@
+{% from "macros/fields.html" import render_text_field, render_area_field%} {%
+extends 'layout.html' %} {% block main_content %}
+
+<!-- Main Section -->
+<main class="formPage my-xl">
+  <div class="content-box">
+    <div class="formWrapper">
+      <a
+        class="backButton"
+        href="{{ url_for('user.single_user', user_id=user.id) }}"
+        ><i class="im im-angle-left"></i
+      ></a>
+      <br />
+
+      <form class="form" method="POST">
+        {{ form.hidden_tag() }}
+
+        <!-- Input:Username -->
+        <div class="form__field">
+          <label for="formInput#text">{{form.username.label}}: </label>
+          {{form.username(class="input input--text", id="formInput#text",
+          type="text", placeholder="Enter your username...", disabled=True)}}
+        </div>
+
+        <!-- Input:Email -->
+        <div class="form__field">
+          <label for="formInput#text">{{form.email.label}}: </label>
+          {{form.email(class="input input--text", id="formInput#text",
+          type="text", placeholder="Enter your email...", disabled=True)}}
+        </div>
+
+        <!-- Input:Subject -->
+        <div class="form__field">
+          <label for="formInput#text">{{form.subject.label}}: </label>
+          {{form.subject(class="input input--text", id="formInput#text",
+          type="text", placeholder="Enter the subject of your message..")}} {%
+          if form.subject.help_text %}
+          <small>{{form.subject.help_text}}</small>
+          {% endif %} {% for error in form.subject.errors %}
+          <p style="color: red">{{error}}</p>
+          {% endfor %}
+        </div>
+
+        <!-- Input:Message body -->
+        <div class="form__field">
+          <label for="formInput#text">{{form.body.label}}: </label>
+          {{form.body(class="input input--text", id="formInput#text",
+          type="text", placeholder="Enter the content of your message..",
+          rows=4, style="resize: none")}} {% if form.body.help_text %}
+          <small>{{form.body.help_text}}</small>
+          {% endif %} {% for error in form.body.errors %}
+          <p style="color: red">{{error}}</p>
+          {% endfor %}
+        </div>
+
+        <div class="auth__actions">
+          {{ form.submit(class="btn btn--sub btn--lg my-md", value="Send") }}
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock main_content %}

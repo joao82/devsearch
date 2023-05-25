@@ -1,0 +1,60 @@
+{% extends 'layout.html' %} {% block main_content %}
+
+<main class="projects">
+  <!-- Search Result: DevList -->
+  <section class="projectsList">
+    <div class="container">
+      <div class="grid grid--three">
+        {% for project in projects %}
+        <div class="column">
+          <div class="card project">
+            <a
+              href="{{ url_for('project.single_project', project_id=project.id) }}"
+              class="project"
+            >
+              {% if project.project_pic %}
+              <img
+                class="project__thumbnail"
+                src="{{ url_for('static', filename='img/pic/' + project.project_pic) }}"
+                alt="project thumbnail"
+              />
+              {% else %}
+              <img
+                class="project__thumbnail"
+                src="{{ url_for('static', filename='img/pic/default_project.jpg') }}"
+                alt="project thumbnail"
+              />
+              {% endif %}
+              <div class="card__body">
+                <h3 class="project__title">{{project.title}}</h3>
+                <p>
+                  <a
+                    class="project__author"
+                    href="{{ url_for('user.single_user', user_id=project.author.id) }}"
+                    >By {{project.author.fullname}}</a
+                  >
+                </p>
+                <p class="project--rating">
+                  <span style="font-weight: bold"
+                    >{{project.positive_rate}}%</span
+                  >
+                  Positive Feedback ({{project.total_vote}} Vote)
+                </p>
+                <div class="project__tags">
+                  {% for tag in project.tags [:6] %}
+                  <span class="tag tag--pill tag--main">
+                    <small>{{tag.tag}}</small>
+                  </span>
+                  {% endfor %}
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock main_content %}

@@ -1,0 +1,38 @@
+{% macro render_text_field(field) %}
+<div class="form__field">
+  <label for="formInput#text">{{field.label}}</label>
+  {{field(class="input input--text", id="formInput#text", type="text",
+  placeholder="")}} {% if field.help_text %}
+  <small>{{field.help_text}}</small>
+  {% endif %} {% for error in field.errors %}
+  <p style="color: red">{{error}}</p>
+  {% endfor %}
+</div>
+{% endmacro %} {% macro render_area_field(field) %}
+<div class="form__field">
+  <label for="formInput#text">{{field.label}}</label>
+  {{field(class="input input--text", id="formInput#text", type="text",
+  placeholder="", rows=4, style="resize: none")}} {% if field.help_text %}
+  <small>{{field.help_text}}</small>
+  {% endif %} {% for error in field.errors %}
+  <p style="color: red">{{error}}</p>
+  {% endfor %}
+</div>
+{% endmacro %} {% macro render_selection_field(field) %}
+<div class="form_group">
+  {{ field.label(class_="form_label") }} {{ field(class_="form_field", rows=4,
+  multiple=False) }} {% for error in field.errors %}
+  <span class="form_error">{{ error }}</span>
+  {% endfor %}
+</div>
+{% endmacro %} {% macro render_file_field(field) %}
+<div class="custom-file">
+  {{ field.label(class_="form_label") }}
+  <input type="file" name="inputFile" autocomplete="off" />
+  {% for error in field.errors %}
+  <span class="form_error">{{ error }}</span>
+  {% endfor %}
+</div>
+{% endmacro %} {% macro render_submit_field(field) %}
+<div class="form__field">{{field(class="btn btn-primary btn-sm")}}</div>
+{% endmacro %}

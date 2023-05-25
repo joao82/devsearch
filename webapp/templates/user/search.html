@@ -1,0 +1,50 @@
+{% extends 'layout.html' %} {% block main_content %}
+<main class="home">
+  <!-- Search Result: DevList -->
+  <section class="devlist">
+    <div class="container">
+      <div class="grid grid--three">
+        {% for user in users %}
+        <div class="column card">
+          <div class="dev">
+            <a
+              href="{{ url_for('user.single_user', user_id=user.id) }}"
+              class="card__body"
+            >
+              <div class="dev__profile">
+                {% if user.profile_pic %}
+                <img
+                  class="avatar avatar--md"
+                  alt="image"
+                  src="{{ url_for('static', filename='img/pic/' + user.profile_pic) }}"
+                />
+                {% else %}
+                <img
+                  class="avatar avatar--md"
+                  alt="image"
+                  src="{{ url_for('static', filename='img/pic/default_user.png') }}"
+                />
+                {% endif %}
+                <div class="dev__meta">
+                  <h3>{{ user.fullname }}</h3>
+                  <h5>{{ user.intro }}</h5>
+                </div>
+              </div>
+              <p class="dev__info">{{ user.about_me | truncate(100) }}</p>
+              <div class="dev__skills">
+                {% for skill in user.skills [:5] %}
+                <span class="tag tag--pill tag--main">
+                  <small>{{ skill.skill }}</small>
+                </span>
+                {% endfor %}
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock main_content %}

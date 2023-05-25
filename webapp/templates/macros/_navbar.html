@@ -1,0 +1,68 @@
+{% from "macros/_svgs.html" import moon, sun %} {% macro header(current_user,
+theme) %}
+
+<header class="header">
+  <div class="container container--narrow">
+    <a href="{{ url_for('user.index') }}" class="header__logo">
+      <img
+        src="{{ url_for('static', filename='img/logo.svg') }}"
+        alt="DevSearch Logo"
+      />
+    </a>
+    <nav class="header__nav">
+      <input type="checkbox" id="responsive-menu" />
+      <label for="responsive-menu" class="toggle-menu">
+        <span>Menu</span>
+        <div class="toggle-menu__lines"></div>
+      </label>
+      <ul class="header__menu">
+        <li class="header__menuItem">
+          <a href="{{ url_for('user.index') }}">Developers</a>
+        </li>
+        <li class="header__menuItem">
+          <a href="{{ url_for('project.projects') }}">Projects</a>
+        </li>
+
+        {% if current_user.is_authenticated %}
+        <li class="header__menuItem">
+          <a href="{{ url_for('user.messages') }}"
+            >Inbox {% set new_messages = current_user.new_messages() %}
+            <span
+              id="message_count"
+              class="badge badge-secondary badge-pill"
+              style="visibility: {% if new_messages %} visible
+                                 {% else %} hidden
+                                 {% endif %};"
+            >
+              {{ new_messages }}
+            </span>
+          </a>
+        </li>
+        <li class="header__menuItem">
+          <a href="{{ url_for('user.account') }}">Account</a>
+        </li>
+        <li class="header__menuItem">
+          <a href="{{ url_for('auth.logout') }}" class="btn btn--sub">Logout</a>
+        </li>
+        <a
+          href="{{ url_for('user.toggle_theme', current_page=request.path) }}"
+          class="nav_link"
+        >
+          <span class="nav_item">
+            {% if theme == "dark" %} {{ sun("nav_icon") }} {% else %} {{
+            moon("nav_icon") }} {% endif %}
+          </span>
+        </a>
+        {% else %}
+        <li class="header__menuItem">
+          <a href="{{ url_for('auth.login') }}" class="btn btn--sub"
+            >Login/Sign Up</a
+          >
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+{% endmacro %}

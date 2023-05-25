@@ -1,0 +1,39 @@
+{% from "macros/fields.html" import render_text_field, render_area_field,
+render_file_field %} {% extends 'layout.html' %} {% block main_content %}
+
+<main class="formPage my-xl">
+  <div class="content-box">
+    <div class="formWrapper">
+      <a class="backButton" href="{{ url_for('user.account') }}"
+        ><i class="im im-angle-left"></i
+      ></a>
+      <br />
+
+      <form
+        class="form"
+        method="POST"
+        action="{{ url_for('user.edit_user', user_id=current_user.id) }}"
+        enctype="multipart/form-data"
+      >
+        {{ form.hidden_tag() }}
+        <div class="form__field">
+          {{ render_text_field(form.fullname) }} {{
+          render_text_field(form.intro) }} {{ render_area_field(form.about_me)
+          }} {{ render_text_field(form.location) }} {{
+          render_file_field(form.profile_pic) }} {{
+          render_text_field(form.social_github) }} {{
+          render_text_field(form.social_stakoverflow) }} {{
+          render_text_field(form.social_twitter) }} {{
+          render_text_field(form.social_linkedin) }} {{
+          render_text_field(form.social_website) }}
+        </div>
+
+        <div class="auth__actions">
+          {{ form.submit(class="btn btn--sub btn--lg my-md", value="Submit") }}
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock main_content %}

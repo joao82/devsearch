@@ -1,0 +1,40 @@
+.movie_rating {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.rating_link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: unset;
+}
+
+.star {
+  width: 1.5em;
+  height: 1.5em;
+  fill: none;
+}
+
+.star:hover {
+  fill: #ffd02a;
+  stroke: #cca311;
+}
+
+.star--filled {
+  fill: #ffd02a;
+}
+
+.rating_link:not(:first-of-type) {
+  margin-left: 2px;
+}
+
+.star_blocked {
+  width: 1.5em;
+  height: 1.5em;
+  fill: none;
+}
+
+.star--filled {
+  fill: #ffd02a;
+}
