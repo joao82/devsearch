@@ -34,10 +34,11 @@ This repository contains a project converted from Django to Flask as part of the
 
 ## 📝 User Stories
 
-- As a user I want to `add movies to my watch list`, so that I can track all movies I saw.
-- As a user I want to be able to `rating and categorize the movies that I saw`, so that I can search for categories.
-- As a user I want to `record the day I saw a movie`, so that I can track when I saw the movies.
-- As a user I want to `see all the movies in a watch list`, so that I have track of what movies I saw and the ones I still need to see.
+- As a user I want to `add my projects to my portfolio`, so that others can see my work.
+- As a user I want to be able to `rating projects and leave comments about others work`, so that I inspire more freelancers.
+- As a user I want to be abel to `search for developers by skills, description and name`, so that I can find the best freelancers to hire.
+- As a user I want to be abel to `search for projects`, so that I can find similar projects that I am looking for.
+- As a user I want to `message a developer`, so that I react out to them and interact with.
 
 ## 📡 Architecture
 
@@ -47,7 +48,7 @@ This repository contains a project converted from Django to Flask as part of the
 
 - Learn how to implement `monolithic python project` using HTML, CSS and Flask.
 - Learn about to `template Jinja2 macros` and automate specific components to be reused.
-- Learn the `Model View Controller (MVC) architecture`.
+- Learn the `Model View Template (MVT) architecture`.
 - Learn how to use ORM using SQLalchemy with Flask-Migrate library an integrate with postgreSQL to manage the database
 - Learn develop an `intermediate flask project`.
 - Learn to plan a medium to intermediate web app project.
@@ -60,5 +61,5 @@ This repository contains a project converted from Django to Flask as part of the
 
 ## 📌 Acknowledgments
 
-- Course Instructor - [Jonas Schmedtmann](https://github.com/jonasschmedtmann)
+- Course Instructor - [Devis Ivy](https://github.com/divanov11)
 - Icons Used For Tech Stack Section - [https://img.shields.io](https://img.shields.io)
