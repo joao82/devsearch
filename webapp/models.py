@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(500), nullable=False)
     fullname = db.Column(db.String(80))
     intro = db.Column(db.String(150))
-    about_me = db.Column(db.Text(500))
+    about_me = db.Column(db.Text)
     profile_pic = db.Column(db.String(10000), nullable=True, default="default_user.png")
     location = db.Column(db.String(150))
     social_github = db.Column(db.String(150))
@@ -173,7 +173,7 @@ class Project(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
     title = db.Column(db.String(80), unique=True, nullable=False)
-    description = db.Column(db.Text(1000))
+    description = db.Column(db.Text)
     project_pic = db.Column(db.String(300), nullable=True, default="default_project.jpg")
     rating = db.Column(db.Integer, default=0)
     total_votes = db.Column(db.Integer, default=0)
@@ -256,7 +256,7 @@ class Comment(db.Model):
     __table_name__ = "comments"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    content = db.Column(db.Text(1000), unique=True, nullable=False)
+    content = db.Column(db.Text, unique=True, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), default=datetime.utcnow)
     project_id = db.Column(db.Integer, db.ForeignKey("project.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))

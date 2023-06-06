@@ -2,7 +2,7 @@
 
 This repository contains a project converted from Django to Flask as part of the tutorial **"Python Django - Complete Course"** by **Devis Ivy**, built using **HTML5, CSS3, PostgreSQl, Flask and Python**.
 
-## 🔗 Live URL: <a href="https://searchdev-vuxm.onrender.com">🔎 Developers Search Engine 💻</a>
+## 🔗 Live URL: <a href="https://devsearch-yyxh.onrender.com">🔎 Developers Search Engine 💻</a>
 
 [![Render Status](https://api.netlify.com/api/v1/badges/1c7a3caa-d0f7-4e66-af82-49c8f6b5eed3/deploy-status)](https://app.netlify.com/sites/pymovie-joao/deploys)
 
