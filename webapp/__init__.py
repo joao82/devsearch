@@ -14,7 +14,7 @@ login.login_view = "auth.login"
 login.login_message = "Please login to access this page"
 
 
-def create_app(config_class=DevelopmentConfig):
+def create_app(config_class=ProductionConfig):
     app = Flask(__name__)
     app.config.from_object(config_class)
     app.config.update(

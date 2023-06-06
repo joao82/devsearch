@@ -9,7 +9,6 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, os.environ.get("DATABASE_URL"))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     ADMINS = os.environ.get("ADMINS")
-    # ADMINS = ["codingdevz@gmail.com"]
     UPLOAD_FOLDER = os.environ.get("UPLOAD_FOLDER")
     POSTS_PER_PAGE = 6
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024
